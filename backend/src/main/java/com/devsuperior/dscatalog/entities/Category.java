@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.devsuperior.dscatalog.dto.CategoryDTO;
+
 @Entity
 @Table(name="tb_category")
 public class Category implements Serializable{
