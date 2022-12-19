@@ -7,38 +7,40 @@ import com.devsuperior.dscatalog.entities.Category;
 public class CategoryDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private Long Id;
-	private String Name;
+	private Long id;
+	private String name;
 	
 	public CategoryDTO() {
 		
 	}
 
 	public CategoryDTO(Long id, String name) {
-		Id = id;
-		Name = name;
+		this.id = id;
+		this.name = name;
 	}
 	
 	public CategoryDTO(Category category) {
-		this.Id = category.getId();
-		this.Name = category.getName();
+		this.id = category.getId();
+		this.name = category.getName();
 	}
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
+	
+	
 	
 	
 	
