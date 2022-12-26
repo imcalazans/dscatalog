@@ -1,6 +1,8 @@
-package com.devsuperior.dscatalog.service;
+package com.devsuperior.dscatalog.services;
 
 import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -54,13 +56,13 @@ public class ProductService {
 	@Transactional
 	public ProductDTO update(Long id, ProductDTO dto) {
 		try {
-			Product entity = repository.getOne(id);
+			Product entity = new Product();
+			entity = repository.getOne(id);
 			copyDtoToEntity(dto, entity);
 			entity = repository.save(entity);
 			return new ProductDTO(entity);
-		} catch (javax.persistence.EntityNotFoundException e) {
-			new ResourceNotFoundException("Id Not found" + id);
-			return null;
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException("Id Not found" + id);
 		}
 	}
 

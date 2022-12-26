@@ -24,9 +24,9 @@ import com.devsuperior.dscatalog.entities.Category;
 import com.devsuperior.dscatalog.entities.Product;
 import com.devsuperior.dscatalog.repositories.CategoryRepository;
 import com.devsuperior.dscatalog.repositories.ProductRepository;
-import com.devsuperior.dscatalog.service.ProductService;
 import com.devsuperior.dscatalog.service.exceptions.DatabaseException;
 import com.devsuperior.dscatalog.service.exceptions.ResourceNotFoundException;
+import com.devsuperior.dscatalog.services.ProductService;
 import com.devsuperior.dscatalog.tests.Factory;
 
 @ExtendWith(SpringExtension.class)
@@ -79,8 +79,6 @@ public class ProductServiceTests {
 
 	@Test
 	public void UpdateShouldThrowEntityNotFoundExceptionWhenIdAndEntityExists() {
-		ProductDTO obj = service.update(nonExistingId, productDTO);
-		
 		Assertions.assertThrows(ResourceNotFoundException.class, () -> {
 			service.update(nonExistingId, productDTO);
 		});
