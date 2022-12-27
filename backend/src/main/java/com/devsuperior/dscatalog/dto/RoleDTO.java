@@ -1,31 +1,28 @@
-package com.devsuperior.dscatalog.entities;
+package com.devsuperior.dscatalog.dto;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.devsuperior.dscatalog.entities.Role;
 
-@Entity
-@Table(name="tb_role")
-public class Role implements Serializable{
+public class RoleDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String authority;
 	
-	public Role() {
-		
+	public RoleDTO() {
 	}
 
-	public Role(Long id, String authority) {
+	public RoleDTO(Long id, String authority) {
 		this.id = id;
 		this.authority = authority;
+	}
+	
+	public RoleDTO(Role entity) {
+		this.id = entity.getId();
+		this.authority = entity.getAuthority();
+		
 	}
 
 	public Long getId() {
@@ -61,11 +58,9 @@ public class Role implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Role other = (Role) obj;
+		RoleDTO other = (RoleDTO) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
 	
 	
 
